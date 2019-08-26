@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("LinqTee.Tests")]
 
 namespace LinqTee
 {
@@ -24,19 +26,25 @@ namespace LinqTee
 
         internal static IEnumerable<T> WyeZip<T>(this IEnumerable<T> left, IEnumerable<T> right)
         {
+            if (left == null)
+                throw new ArgumentNullException(nameof(left));
+            
+            if (right == null)
+                throw new ArgumentNullException(nameof(right));
+
             var zipCollection = new List<T>();
 
             using (var lEnumerator = left.GetEnumerator())
             using (var rEnumerator = right.GetEnumerator())
             {
-                while (lEnumerator.MoveNext() && rEnumerator.MoveNext())
+                while (lEnumerator.MoveNext())
                 {
                     zipCollection.Add(lEnumerator.Current);
-                    zipCollection.Add(rEnumerator.Current);
+                    if (rEnumerator.MoveNext())
+                    {
+                        zipCollection.Add(rEnumerator.Current);
+                    }
                 }
-
-                while (lEnumerator.MoveNext())
-                    zipCollection.Add(lEnumerator.Current);
 
                 while (rEnumerator.MoveNext())
                     zipCollection.Add(rEnumerator.Current);
