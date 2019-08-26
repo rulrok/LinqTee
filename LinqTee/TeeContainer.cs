@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T>
+    public partial class TeeContainer<T> : ITeeable<T>
     {
         private IEnumerable<T> _left;
         private IEnumerable<T> _right;

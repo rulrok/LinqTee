@@ -18,7 +18,7 @@ namespace LinqTee.Tests
             var range = Enumerable.Range(1, 100).ToList();
 
             range
-                .TeeCollect(EvenNumber)
+                .Tee(EvenNumber)
                 .LeftCollect(ref evenNumbers)
                 .RightCollect(ref oddNumbers);
 
@@ -45,7 +45,7 @@ namespace LinqTee.Tests
             var range = Enumerable.Range(1, 100).ToList();
 
             range
-                .TeeCollect(EvenNumber)
+                .Tee(EvenNumber)
                 .LeftCollect(ref evenNumbers)
                 .IgnoreRight();
 
@@ -61,7 +61,7 @@ namespace LinqTee.Tests
             var range = Enumerable.Range(1, 100).ToList();
 
             range
-                .TeeCollect(EvenNumber)
+                .Tee(EvenNumber)
                 .IgnoreLeft()
                 .RightCollect(ref oddNumbers);
 
@@ -75,7 +75,7 @@ namespace LinqTee.Tests
             var range = Enumerable.Range(1, 100).ToList();
 
             range
-                .TeeCollect(EvenNumber)
+                .Tee(EvenNumber)
                 .IgnoreLeft()
                 .IgnoreRight();
             

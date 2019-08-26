@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace LinqTee
 {
+    public interface ITeeable<T> : ITeeableCollector<T>, ITeeableSplitter<T>
+    {
+    }
+
     public interface ITeeableSplitter<T>
     {
         ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action);
@@ -11,7 +15,7 @@ namespace LinqTee
     public interface ITeeableCollector<T>
     {
         ITeeableColectorRemainder<T> LeftCollect(ref IList<T> collection);
-        
+
         ITeeableColectorRemainder<T> IgnoreLeft();
     }
 
