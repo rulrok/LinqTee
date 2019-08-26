@@ -4,14 +4,19 @@ namespace LinqTee.Contracts
 {
     public interface ITeeableCollector<T>
     {
-        ITeeableColectorRemainder<T> LeftCollect(ref IList<T> collection);
-
-        ITeeableColectorRemainder<T> IgnoreLeft();
+        ILeftCollector<T> Collect();
     }
 
-    public interface ITeeableColectorRemainder<T>
+    public interface ILeftCollector<T>
     {
-        void RightCollect(ref IList<T> collection);
+        IRightCollector<T> Left(ref IList<T> collection);
+
+        IRightCollector<T> IgnoreLeft();
+    }
+
+    public interface IRightCollector<T>
+    {
+        void Right(ref IList<T> collection);
 
         void IgnoreRight();
     }

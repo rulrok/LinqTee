@@ -30,5 +30,10 @@ namespace LinqTee
 
             return new TeeContainer<T>(left, right);
         }
+
+        public ILeftCollector<T> Collect()
+        {
+            return this;
+        }
     }
 }

@@ -19,8 +19,9 @@ namespace LinqTee.Tests
 
             range
                 .Tee(EvenNumber)
-                .LeftCollect(ref evenNumbers)
-                .RightCollect(ref oddNumbers);
+                .Collect()
+                .Left(ref evenNumbers)
+                .Right(ref oddNumbers);
 
             //Assert left side
             Assert.Multiple(testDelegate: () =>
@@ -46,7 +47,8 @@ namespace LinqTee.Tests
 
             range
                 .Tee(EvenNumber)
-                .LeftCollect(ref evenNumbers)
+                .Collect()
+                .Left(ref evenNumbers)
                 .IgnoreRight();
 
             Assert.That(evenNumbers, Has.Exactly(range.Count / 2).Items);
@@ -62,8 +64,9 @@ namespace LinqTee.Tests
 
             range
                 .Tee(EvenNumber)
+                .Collect()
                 .IgnoreLeft()
-                .RightCollect(ref oddNumbers);
+                .Right(ref oddNumbers);
 
             Assert.That(oddNumbers, Has.Exactly(range.Count / 2).Items);
             Assert.That(oddNumbers, Has.None.Matches<int>(EvenNumber));
@@ -76,6 +79,7 @@ namespace LinqTee.Tests
 
             range
                 .Tee(EvenNumber)
+                .Collect()
                 .IgnoreLeft()
                 .IgnoreRight();
             

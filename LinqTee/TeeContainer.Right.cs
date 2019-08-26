@@ -4,7 +4,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ITeeableRemainder<T>, ITeeableColectorRemainder<T>
+    public partial class TeeContainer<T> : ITeeableRemainder<T>, IRightCollector<T>
     {
         public IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
@@ -12,7 +12,7 @@ namespace LinqTee
             return this;
         }
 
-        void ITeeableColectorRemainder<T>.RightCollect(ref IList<T> collection)
+        void IRightCollector<T>.Right(ref IList<T> collection)
         {
             foreach (var right in _right)
             {
@@ -20,7 +20,7 @@ namespace LinqTee
             }
         }
 
-        void ITeeableColectorRemainder<T>.IgnoreRight()
+        void IRightCollector<T>.IgnoreRight()
         {
         }
     }
