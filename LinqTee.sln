@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTee", "LinqTee\LinqTee.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTee.Tests", "LinqTee.Tests\LinqTee.Tests.csproj", "{1763A663-65E2-425C-9439-D694DC316BF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTee.Tests.Internal", "LinqTee.Tests.Internal\LinqTee.Tests.Internal.csproj", "{2F36A25D-62A9-4DA1-9451-BD4760118AF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{1763A663-65E2-425C-9439-D694DC316BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1763A663-65E2-425C-9439-D694DC316BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1763A663-65E2-425C-9439-D694DC316BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F36A25D-62A9-4DA1-9451-BD4760118AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F36A25D-62A9-4DA1-9451-BD4760118AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F36A25D-62A9-4DA1-9451-BD4760118AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F36A25D-62A9-4DA1-9451-BD4760118AF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

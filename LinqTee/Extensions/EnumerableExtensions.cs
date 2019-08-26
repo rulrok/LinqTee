@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using LinqTee.Contracts;
 
-[assembly: InternalsVisibleTo("LinqTee.Tests")]
-
+[assembly: InternalsVisibleTo("LinqTee.Tests.Internal")]
 namespace LinqTee.Extensions
 {
     public static class EnumerableExtensions
