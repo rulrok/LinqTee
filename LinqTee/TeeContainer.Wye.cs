@@ -1,30 +1,21 @@
 using System.Collections.Generic;
-using System.Linq;
 using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : IWyer<T>, IWyeable<T>
+    public partial class TeeContainer<T>
     {
-//        public IEnumerable<T> Concatenate()
-//        {
-//            return _left.Concat(_right);
-//        }
-//
-//        public IEnumerable<T> ConcatenateRight()
-//        {
-//            return _right.Concat(_left);
-//        }
-//
-//        public IEnumerable<T> Zip()
-//        {
-//            return _left.WyeZip(_right);
-//        }
-//
-//        public IEnumerable<T> ZipRight()
-//        {
-//            return _right.WyeZip(_left);
-//        }
+        public IWyeable<T> Wye()
+        {
+            _wyeRightToLeft = false;
+            return this;
+        }
+
+        public IWyeable<T> WyeRight()
+        {
+            _wyeRightToLeft = true;
+            return this;
+        }
 
         public IEnumerable<T> OperateWith(IWyeableOperation<T> operation)
         {
