@@ -16,5 +16,7 @@ namespace LinqTee
     public interface IWyeable<out T>
     {
         IEnumerable<T> Wye();
+
+        IEnumerable<T> WyeRight();
     }
 }

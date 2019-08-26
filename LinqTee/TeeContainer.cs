@@ -31,5 +31,10 @@ namespace LinqTee
         {
             return _left.Concat(_right);
         }
+
+        public IEnumerable<T> WyeRight()
+        {
+            return _right.Concat(_left);
+        }
     }
 }

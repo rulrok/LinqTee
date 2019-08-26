@@ -89,5 +89,19 @@ namespace LinqTee.Tests
 
             Assert.That(actual, Is.EqualTo(expectedCollection));
         }
+
+        [Test]
+        public void it_tees_and_right_wyes_having_odd_numbers_coming_first()
+        {
+            var actual = _sut
+                .Tee(EvenNumbers)
+                .Left(even => even)
+                .Right(odd => odd)
+                .WyeRight();
+
+            var expected = _oddNumbers.Concat(_evenNumbers);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
