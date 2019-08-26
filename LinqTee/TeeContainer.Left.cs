@@ -5,7 +5,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ITeeableSplitter<T>, ITeeableCollector<T>
+    public partial class TeeContainer<T> : ITeeableProcessor<T>, ITeeableCollector<T>
     {
         public ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
