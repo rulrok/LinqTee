@@ -31,11 +31,5 @@ namespace LinqTee
 
             return new TeeContainer<T>(left, right);
         }
-
- 
-
-
-
-
     }
 }

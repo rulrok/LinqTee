@@ -2,6 +2,10 @@ using System.Collections.Generic;
 
 namespace LinqTee.Contracts
 {
+    /// <summary>
+    /// Collect splitted items to outsite collections.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface ITeeableCollector<T>
     {
         ILeftCollector<T> Collect();
