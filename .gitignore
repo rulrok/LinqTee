@@ -1,0 +1,6 @@
+bin/
+obj/
+/packages/
+/.idea/.idea.LinqTee/.idea/modules.xml
+/.idea/.idea.LinqTee/riderModule.iml
+/.idea/.idea.LinqTee/.idea/contentModel.xml
