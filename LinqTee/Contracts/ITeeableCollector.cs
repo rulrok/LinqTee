@@ -7,17 +7,13 @@ namespace LinqTee.Contracts
         ILeftCollector<T> Collect();
     }
 
-    public interface ILeftCollector<T>
+    public interface ILeftCollector<T> : ILeftSkipper<IRightCollector<T>>
     {
         IRightCollector<T> Left(ref IList<T> collection);
-
-        IRightCollector<T> IgnoreLeft();
     }
 
-    public interface IRightCollector<T>
+    public interface IRightCollector<T> : IRightSkipper<ITeeable<T>>
     {
         void Right(ref IList<T> collection);
-
-        void IgnoreRight();
     }
 }

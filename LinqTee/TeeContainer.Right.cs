@@ -20,8 +20,14 @@ namespace LinqTee
             }
         }
 
-        void IRightCollector<T>.IgnoreRight()
+        IWyeable<T> IRightSkipper<IWyeable<T>>.IgnoreRight()
         {
+            return this;
+        }
+
+        ITeeable<T> IRightSkipper<ITeeable<T>>.IgnoreRight()
+        {
+            return this;
         }
     }
 }

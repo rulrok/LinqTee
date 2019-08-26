@@ -12,16 +12,21 @@ namespace LinqTee
             return this;
         }
 
-        IRightCollector<T> ILeftCollector<T>.IgnoreLeft()
-        {
-            return this;
-        }
-
         IRightCollector<T> ILeftCollector<T>.Left(ref IList<T> collection)
         {
             foreach (var left in _left)
                 collection.Add(left);
 
+            return this;
+        }
+
+        IRightCollector<T> ILeftSkipper<IRightCollector<T>>.IgnoreLeft()
+        {
+            return this;
+        }
+
+        IRightProcessor<T> ILeftSkipper<IRightProcessor<T>>.IgnoreLeft()
+        {
             return this;
         }
     }
