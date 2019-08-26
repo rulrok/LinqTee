@@ -39,7 +39,7 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(evenInts => evenInts)
                 .Right(oddInts => oddInts)
-                .Wye();
+                .ConcatenateLeft();
 
             var expectedCollection = _evenNumbers.Concat(_oddNumbers);
 
@@ -54,7 +54,7 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(evenInts => evenInts.Reverse())
                 .Right(oddInts => oddInts.Reverse())
-                .Wye();
+                .ConcatenateLeft();
 
             var expectedCollection = _evenNumbers
                 .Reverse()
@@ -78,7 +78,7 @@ namespace LinqTee.Tests
                         .Process()
                         .Left(evenLarger5 => evenLarger5)
                         .Right(evenSmaller5 => evenSmaller5)
-                        .Wye();
+                        .ConcatenateLeft();
                 })
                 .Right(odd =>
                 {
@@ -87,9 +87,9 @@ namespace LinqTee.Tests
                         .Process()
                         .Left(oddLarger5 => oddLarger5)
                         .Right(oddSmaller5 => oddSmaller5)
-                        .Wye();
+                        .ConcatenateLeft();
                 })
-                .Wye();
+                .ConcatenateLeft();
 
             var expectedCollection = _evenNumbers
                 .OrderByDescending(LargerThan5)
@@ -106,7 +106,7 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(even => even)
                 .Right(odd => odd)
-                .WyeRight();
+                .ConcatenateRight();
 
             var expected = _oddNumbers.Concat(_evenNumbers);
 
@@ -121,7 +121,7 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(odd => odd)
                 .Right(even => even)
-                .WyeZip();
+                .ZipLeft();
 
             var expected = Enumerable.Range(1, 10);
             Assume.That(expected, Is.Ordered);
@@ -137,7 +137,7 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(even => even)
                 .Right(odd => odd)
-                .WyeZipRight();
+                .ZipRight();
 
             var expected = Enumerable.Range(1, 10);
             Assume.That(expected, Is.Ordered);

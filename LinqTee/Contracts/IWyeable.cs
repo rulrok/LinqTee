@@ -4,12 +4,12 @@ namespace LinqTee.Contracts
 {
     public interface IWyeable<out T>
     {
-        IEnumerable<T> Wye();
+        IEnumerable<T> ConcatenateLeft();
 
-        IEnumerable<T> WyeRight();
+        IEnumerable<T> ConcatenateRight();
 
-        IEnumerable<T> WyeZip();
+        IEnumerable<T> ZipLeft();
 
-        IEnumerable<T> WyeZipRight();
+        IEnumerable<T> ZipRight();
     }
 }
