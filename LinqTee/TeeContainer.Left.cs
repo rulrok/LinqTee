@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ITeeable<T>, ITeeableCollector<T>
+    public partial class TeeContainer<T> : ITeeableSplitter<T>, ITeeableCollector<T>
     {
         public ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {

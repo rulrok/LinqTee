@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqTee
 {
-    public interface ITeeable<T>
+    public interface ITeeableSplitter<T>
     {
         ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action);
     }
