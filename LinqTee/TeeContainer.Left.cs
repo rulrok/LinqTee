@@ -1,18 +1,16 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ILeftCollector<T>
+    public partial class TeeContainer<T> : ILeftCollector<T>, ILeftProcessor<T>
     {
-        public ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
+        IRightProcessor<T> ILeftProcessor<T>.Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
             _left = action(_left);
             return this;
         }
-
 
         IRightCollector<T> ILeftCollector<T>.IgnoreLeft()
         {

@@ -36,6 +36,7 @@ namespace LinqTee.Tests
         {
             var actual = _sut
                 .Tee(EvenNumbers)
+                .Process()
                 .Left(evenInts => evenInts)
                 .Right(oddInts => oddInts)
                 .Wye();
@@ -50,6 +51,7 @@ namespace LinqTee.Tests
         {
             var actual = _sut
                 .Tee(EvenNumbers)
+                .Process()
                 .Left(evenInts => evenInts.Reverse())
                 .Right(oddInts => oddInts.Reverse())
                 .Wye();
@@ -68,10 +70,12 @@ namespace LinqTee.Tests
 
             var actual = _sut
                 .Tee(EvenNumbers)
+                .Process()
                 .Left(even =>
                 {
                     return even
                         .Tee(LargerThan5)
+                        .Process()
                         .Left(evenLarger5 => evenLarger5)
                         .Right(evenSmaller5 => evenSmaller5)
                         .Wye();
@@ -80,6 +84,7 @@ namespace LinqTee.Tests
                 {
                     return odd
                         .Tee(LargerThan5)
+                        .Process()
                         .Left(oddLarger5 => oddLarger5)
                         .Right(oddSmaller5 => oddSmaller5)
                         .Wye();
@@ -98,6 +103,7 @@ namespace LinqTee.Tests
         {
             var actual = _sut
                 .Tee(EvenNumbers)
+                .Process()
                 .Left(even => even)
                 .Right(odd => odd)
                 .WyeRight();
@@ -112,6 +118,7 @@ namespace LinqTee.Tests
         {
             var actual = _sut
                 .Tee(OddNumbers)
+                .Process()
                 .Left(odd => odd)
                 .Right(even => even)
                 .WyeZip();
@@ -127,6 +134,7 @@ namespace LinqTee.Tests
         {
             var actual = _sut
                 .Tee(EvenNumbers)
+                .Process()
                 .Left(even => even)
                 .Right(odd => odd)
                 .WyeZipRight();

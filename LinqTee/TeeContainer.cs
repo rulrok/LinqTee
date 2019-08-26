@@ -35,5 +35,10 @@ namespace LinqTee
         {
             return this;
         }
+
+        public ILeftProcessor<T> Process()
+        {
+            return this;
+        }
     }
 }

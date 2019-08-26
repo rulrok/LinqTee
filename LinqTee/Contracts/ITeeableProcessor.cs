@@ -5,22 +5,16 @@ namespace LinqTee.Contracts
 {
     public interface ITeeableProcessor<T>
     {
-        ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action);
+        ILeftProcessor<T> Process();
     }
 
-    public interface ITeeableRemainder<T>
+    public interface ILeftProcessor<T>
+    {
+        IRightProcessor<T> Left(Func<IEnumerable<T>, IEnumerable<T>> selector);
+    }
+
+    public interface IRightProcessor<T>
     {
         IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action);
-    }
-
-    public interface IWyeable<out T>
-    {
-        IEnumerable<T> Wye();
-
-        IEnumerable<T> WyeRight();
-
-        IEnumerable<T> WyeZip();
-
-        IEnumerable<T> WyeZipRight();
     }
 }
