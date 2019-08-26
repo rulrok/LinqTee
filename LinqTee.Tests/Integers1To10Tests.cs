@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LinqTee.Extensions;
 using NUnit.Framework;
 
 namespace LinqTee.Tests
@@ -111,8 +112,8 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(even => even)
                 .Right(odd => odd)
-                .Wye()
-                .ConcatenateRight();
+                .WyeRight()
+                .Concatenate();
 
             var expected = _oddNumbers.Concat(_evenNumbers);
 
@@ -144,8 +145,8 @@ namespace LinqTee.Tests
                 .Process()
                 .Left(even => even)
                 .Right(odd => odd)
-                .Wye()
-                .ZipRight();
+                .WyeRight()
+                .Zip();
 
             var expected = Enumerable.Range(1, 10);
             Assume.That(expected, Is.Ordered);

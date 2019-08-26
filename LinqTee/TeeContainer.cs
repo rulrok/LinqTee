@@ -4,10 +4,11 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ITeeable<T>, IWyeableOperation<T>
+    public partial class TeeContainer<T> : ITeeable<T>, IWyer<T>, IWyeable<T>
     {
         private IEnumerable<T> _left;
         private IEnumerable<T> _right;
+        private bool _wyeRightToLeft;
 
         private TeeContainer(IEnumerable<T> left, IEnumerable<T> right)
         {
@@ -38,6 +39,18 @@ namespace LinqTee
 
         public ILeftProcessor<T> Process()
         {
+            return this;
+        }
+
+        public IWyeable<T> Wye()
+        {
+            _wyeRightToLeft = false;
+            return this;
+        }
+
+        public IWyeable<T> WyeRight()
+        {
+            _wyeRightToLeft = true;
             return this;
         }
     }

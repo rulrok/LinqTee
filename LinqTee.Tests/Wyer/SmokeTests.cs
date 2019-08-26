@@ -1,4 +1,5 @@
 using System.Linq;
+using LinqTee.Extensions;
 using NUnit.Framework;
 
 namespace LinqTee.Tests.Wyer

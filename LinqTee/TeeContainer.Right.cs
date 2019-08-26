@@ -4,7 +4,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : IRightProcessor<T>, IRightCollector<T>, IWyeableOperation<T>
+    public partial class TeeContainer<T> : IRightProcessor<T>, IRightCollector<T>, IWyer<T>
     {
         IWyer<T> IRightProcessor<T>.Right(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
@@ -20,10 +20,6 @@ namespace LinqTee
             }
         }
 
-        public IWyeableOperation<T> Wye()
-        {
-            return this;
-        }
 
         ITeeable<T> IRightSkipper<ITeeable<T>>.IgnoreRight()
         {

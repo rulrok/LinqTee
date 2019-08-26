@@ -5,20 +5,15 @@ using LinqTee.Contracts;
 
 [assembly: InternalsVisibleTo("LinqTee.Tests")]
 
-namespace LinqTee
+namespace LinqTee.Extensions
 {
-    public static class Extension
+    public static class EnumerableExtensions
     {
-        public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
-        {
-            return TeeContainer<T>.Create(collection, predicate);
-        }
-
         internal static IEnumerable<T> WyeZip<T>(this IEnumerable<T> left, IEnumerable<T> right)
         {
             if (left == null)
                 throw new ArgumentNullException(nameof(left));
-            
+
             if (right == null)
                 throw new ArgumentNullException(nameof(right));
 
@@ -41,6 +36,11 @@ namespace LinqTee
             }
 
             return zipCollection;
+        }
+
+        public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+        {
+            return TeeContainer<T>.Create(collection, predicate);
         }
     }
 }

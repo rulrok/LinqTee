@@ -2,19 +2,20 @@ using System.Collections.Generic;
 
 namespace LinqTee.Contracts
 {
-    public interface IWyer<out T>
+    public interface IWyer<T>
     {
-        IWyeableOperation<T> Wye();
+        IWyeable<T> Wye();
+
+        IWyeable<T> WyeRight();
     }
-    
-    public interface IWyeableOperation<out T>
+
+    public interface IWyeable<T>
     {
-        IEnumerable<T> Concatenate();
+        IEnumerable<T> OperateWith(IWyeableOperation<T> operation);
+    }
 
-        IEnumerable<T> ConcatenateRight();
-
-        IEnumerable<T> Zip();
-
-        IEnumerable<T> ZipRight();
+    public interface IWyeableOperation<T>
+    {
+        IEnumerable<T> Operate(IEnumerable<T> left, IEnumerable<T> right);
     }
 }
