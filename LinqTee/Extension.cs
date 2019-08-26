@@ -11,18 +11,7 @@ namespace LinqTee
     {
         public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
-            var left = new List<T>();
-            var right = new List<T>();
-
-            foreach (var item in collection)
-            {
-                if (predicate(item))
-                    left.Add(item);
-                else
-                    right.Add(item);
-            }
-
-            return new TeeContainer<T>(left, right);
+            return TeeContainer<T>.Create(collection, predicate);
         }
 
         internal static IEnumerable<T> WyeZip<T>(this IEnumerable<T> left, IEnumerable<T> right)
