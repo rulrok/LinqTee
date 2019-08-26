@@ -4,7 +4,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : ILeftCollector<T>, ILeftProcessor<T>
+    public partial class TeeContainer<T> : ILeftCollector<T>, ILeftProcessor<T>, IWyeableOperation<T>
     {
         IRightProcessor<T> ILeftProcessor<T>.Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {

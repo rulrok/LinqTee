@@ -4,7 +4,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : IWyer<T>
+    public partial class TeeContainer<T> : IWyer<T>, IWyeableOperation<T>
     {
         public IEnumerable<T> Concatenate()
         {

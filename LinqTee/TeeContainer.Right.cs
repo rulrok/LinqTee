@@ -4,7 +4,7 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : IRightProcessor<T>, IRightCollector<T>
+    public partial class TeeContainer<T> : IRightProcessor<T>, IRightCollector<T>, IWyeableOperation<T>
     {
         IWyer<T> IRightProcessor<T>.Right(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
