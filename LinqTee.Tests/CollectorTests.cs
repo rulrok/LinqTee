@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace LinqTee.Tests
 {
     [TestFixture]
-    public class TeeableColectorTests
+    public class CollectorTests
     {
         private static bool EvenNumber(int x) => x % 2 == 0;
 
@@ -83,8 +83,32 @@ namespace LinqTee.Tests
                 .Collect()
                 .IgnoreLeft()
                 .IgnoreRight();
-            
+
             Assert.Pass();
+        }
+
+        [Test]
+        public void it_throws_argument_null_exception_for_left_null_collector()
+        {
+            var range = Enumerable.Range(1, 100).ToList();
+
+            IList<int> output = null;
+
+            var teeConstructor = range.Tee(EvenNumber).Collect();
+
+            Assert.That(() => teeConstructor.Left(ref output).IgnoreRight(), Throws.ArgumentNullException);
+        }
+
+        [Test]
+        public void it_throws_argument_null_exception_for_right_null_collector()
+        {
+            var range = Enumerable.Range(1, 100).ToList();
+
+            IList<int> output = null;
+
+            var teeConstructor = range.Tee(EvenNumber).Collect();
+
+            Assert.That(() => teeConstructor.IgnoreLeft().Right(ref output), Throws.ArgumentNullException);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LinqTee.Contracts;
 
@@ -9,7 +10,7 @@ namespace LinqTee
         {
             return this;
         }
-        
+
         ITeeable<T> IRightSkipper<ITeeable<T>>.IgnoreRight()
         {
             return this;
@@ -20,20 +21,24 @@ namespace LinqTee
             return this;
         }
 
-        IRightCollector<T> ILeftCollector<T>.Left(ref IList<T> collection)
+        IRightCollector<T> ILeftCollector<T>.Left(ref IList<T> output)
         {
+            if (output == null)
+                throw new ArgumentNullException(nameof(output));
+
             foreach (var left in _left)
-                collection.Add(left);
+                output.Add(left);
 
             return this;
         }
 
-        void IRightCollector<T>.Right(ref IList<T> collection)
+        void IRightCollector<T>.Right(ref IList<T> output)
         {
+            if (output == null)
+                throw new ArgumentNullException(nameof(output));
+
             foreach (var right in _right)
-            {
-                collection.Add(right);
-            }
+                output.Add(right);
         }
     }
 }
