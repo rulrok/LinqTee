@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace LinqTee
 {
@@ -16,15 +15,15 @@ namespace LinqTee
             _right = right;
         }
 
-        public ITeeable<T> Left(Expression<Func<IEnumerable<T>, IEnumerable<T>>> action)
+        public ITeeable<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
-            _left = action.Compile().Invoke(_left);
+            _left = action(_left);
             return this;
         }
 
-        public IWyeable<T> Right(Expression<Func<IEnumerable<T>, IEnumerable<T>>> action)
+        public IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
-            _right = action.Compile().Invoke(_right);
+            _right = action(_right);
             return this;
         }
 

@@ -7,13 +7,13 @@ namespace LinqTee
 {
     public static class Extension
     {
-        public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Expression<Func<T, bool>> predicate)
+        public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
             var enumerable = collection.ToList();
 
-            var left = enumerable.Where(predicate.Compile()).ToList();
+            var left = enumerable.Where(predicate).ToList();
             var right = enumerable.Except(left).ToList();
-            
+
             return new TeeContainer<T>(left, right);
         }
     }
