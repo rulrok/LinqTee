@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using LinqTee.Extensions;
 using NUnit.Framework;
@@ -6,45 +5,41 @@ using NUnit.Framework;
 namespace LinqTee.Tests.SkipperTests
 {
     [TestFixture]
-    public class CollectorSkipperTests
+    public class ProcessorSkipperSanityTests
     {
         [Test]
-        public void it_can_skip_left_collector_step()
+        public void it_can_skip_left_processor_step()
         {
-            IList<int> output = new List<int>();
-
             Enumerable
                 .Range(1, 10)
                 .Tee(x => x >= 5)
-                .Collect()
+                .Process()
                 .IgnoreLeft()
-                .Right(ref output);
+                .Right(ints => ints);
 
             Assert.Pass();
         }
 
         [Test]
-        public void it_can_skip_right_collector_step()
+        public void it_can_skip_right_processor_step()
         {
-            IList<int> output = new List<int>();
-
             Enumerable
                 .Range(1, 10)
                 .Tee(x => x >= 5)
-                .Collect()
-                .Left(ref output)
+                .Process()
+                .Left(ints => ints)
                 .IgnoreRight();
 
             Assert.Pass();
         }
 
         [Test]
-        public void it_can_skip_both_collector_steps()
+        public void it_can_skip_both_processor_steps()
         {
             Enumerable
                 .Range(1, 10)
                 .Tee(x => x >= 5)
-                .Collect()
+                .Process()
                 .IgnoreLeft()
                 .IgnoreRight();
 
