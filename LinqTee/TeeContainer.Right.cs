@@ -20,7 +20,7 @@ namespace LinqTee
             }
         }
 
-        void ITeeableColectorRemainder<T>.IgnoreRight()
+        public void IgnoreRight()
         {
         }
     }

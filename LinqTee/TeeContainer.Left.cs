@@ -22,7 +22,7 @@ namespace LinqTee
             return this;
         }
 
-        ITeeableColectorRemainder<T> ITeeableCollector<T>.IgnoreLeft()
+        public ITeeableColectorRemainder<T> IgnoreLeft()
         {
             return this;
         }

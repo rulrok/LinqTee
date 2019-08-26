@@ -2,17 +2,13 @@ using System.Collections.Generic;
 
 namespace LinqTee.Contracts
 {
-    public interface ITeeableCollector<T>
+    public interface ITeeableCollector<T> : ILeftSkipper<ITeeableColectorRemainder<T>>
     {
         ITeeableColectorRemainder<T> LeftCollect(ref IList<T> collection);
-
-        ITeeableColectorRemainder<T> IgnoreLeft();
     }
 
-    public interface ITeeableColectorRemainder<T>
+    public interface ITeeableColectorRemainder<T> : IRightSkipper
     {
         void RightCollect(ref IList<T> collection);
-
-        void IgnoreRight();
     }
 }
