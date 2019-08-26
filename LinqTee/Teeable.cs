@@ -5,7 +5,11 @@ namespace LinqTee
 {
     public interface ITeeable<T>
     {
-        ITeeable<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action);
+        ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action);
+    }
+
+    public interface ITeeableRemainder<T>
+    {
         IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action);
     }
 

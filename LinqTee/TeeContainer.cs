@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LinqTee
 {
-    public class TeeContainer<T> : ITeeable<T>, IWyeable<T>
+    public class TeeContainer<T> : ITeeable<T>, ITeeableRemainder<T>, IWyeable<T>
     {
         private IEnumerable<T> _left;
         private IEnumerable<T> _right;
@@ -15,7 +15,7 @@ namespace LinqTee
             _right = right;
         }
 
-        public ITeeable<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
+        public ITeeableRemainder<T> Left(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
             _left = action(_left);
             return this;

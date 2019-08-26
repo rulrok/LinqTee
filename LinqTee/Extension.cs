@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace LinqTee
 {
@@ -9,10 +8,16 @@ namespace LinqTee
     {
         public static ITeeable<T> Tee<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
-            var enumerable = collection.ToList();
+            var left = new List<T>();
+            var right = new List<T>();
 
-            var left = enumerable.Where(predicate).ToList();
-            var right = enumerable.Except(left).ToList();
+            foreach (var item in collection)
+            {
+                if (predicate(item))
+                    left.Add(item);
+                else
+                    right.Add(item);
+            }
 
             return new TeeContainer<T>(left, right);
         }

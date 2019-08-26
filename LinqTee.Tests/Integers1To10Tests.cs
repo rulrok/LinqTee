@@ -83,7 +83,6 @@ namespace LinqTee.Tests
                 })
                 .Wye();
 
-            Func<int, bool> keySelector = i => i > 5;
             var expectedCollection = _evenNumbers
                 .OrderByDescending(LargerThan5)
                 .Concat(_oddNumbers.OrderByDescending(LargerThan5));
