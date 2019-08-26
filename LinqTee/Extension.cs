@@ -21,5 +21,28 @@ namespace LinqTee
 
             return new TeeContainer<T>(left, right);
         }
+
+        internal static IEnumerable<T> WyeZip<T>(this IEnumerable<T> left, IEnumerable<T> right)
+        {
+            var zipCollection = new List<T>();
+
+            using (var lEnumerator = left.GetEnumerator())
+            using (var rEnumerator = right.GetEnumerator())
+            {
+                while (lEnumerator.MoveNext() && rEnumerator.MoveNext())
+                {
+                    zipCollection.Add(lEnumerator.Current);
+                    zipCollection.Add(rEnumerator.Current);
+                }
+
+                while (lEnumerator.MoveNext())
+                    zipCollection.Add(lEnumerator.Current);
+
+                while (rEnumerator.MoveNext())
+                    zipCollection.Add(rEnumerator.Current);
+            }
+
+            return zipCollection;
+        }
     }
 }

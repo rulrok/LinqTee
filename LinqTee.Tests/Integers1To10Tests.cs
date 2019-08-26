@@ -10,11 +10,14 @@ namespace LinqTee.Tests
         private int[] _evenNumbers;
         private int[] _oddNumbers;
         private IEnumerable<int> _sut;
+
         private static readonly Func<int, bool> EvenNumbers;
+        private static readonly Func<int, bool> OddNumbers;
 
         static Integers1To10Tests()
         {
             EvenNumbers = x => x % 2 == 0;
+            OddNumbers = x => !EvenNumbers(x);
         }
 
         [SetUp]
@@ -100,6 +103,36 @@ namespace LinqTee.Tests
                 .WyeRight();
 
             var expected = _oddNumbers.Concat(_evenNumbers);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void it_tees_and_zip_wyes_resulting_on_original_collection()
+        {
+            var actual = _sut
+                .Tee(OddNumbers)
+                .Left(odd => odd)
+                .Right(even => even)
+                .WyeZip();
+
+            var expected = Enumerable.Range(1, 10);
+            Assume.That(expected, Is.Ordered);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void it_tees_and_right_zip_wyes_resulting_on_original_collection()
+        {
+            var actual = _sut
+                .Tee(EvenNumbers)
+                .Left(even => even)
+                .Right(odd => odd)
+                .WyeZipRight();
+
+            var expected = Enumerable.Range(1, 10);
+            Assume.That(expected, Is.Ordered);
 
             Assert.That(actual, Is.EqualTo(expected));
         }

@@ -18,5 +18,9 @@ namespace LinqTee
         IEnumerable<T> Wye();
 
         IEnumerable<T> WyeRight();
+
+        IEnumerable<T> WyeZip();
+        
+        IEnumerable<T> WyeZipRight();
     }
 }
