@@ -4,9 +4,9 @@ using LinqTee.Contracts;
 
 namespace LinqTee
 {
-    public partial class TeeContainer<T> : IWyeable<T>
+    public partial class TeeContainer<T> : IWyer<T>
     {
-        public IEnumerable<T> ConcatenateLeft()
+        public IEnumerable<T> Concatenate()
         {
             return _left.Concat(_right);
         }
@@ -16,7 +16,7 @@ namespace LinqTee
             return _right.Concat(_left);
         }
 
-        public IEnumerable<T> ZipLeft()
+        public IEnumerable<T> Zip()
         {
             return _left.WyeZip(_right);
         }

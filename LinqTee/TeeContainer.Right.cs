@@ -6,7 +6,7 @@ namespace LinqTee
 {
     public partial class TeeContainer<T> : IRightProcessor<T>, IRightCollector<T>
     {
-        public IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action)
+        IWyer<T> IRightProcessor<T>.Right(Func<IEnumerable<T>, IEnumerable<T>> action)
         {
             _right = action(_right);
             return this;
@@ -20,12 +20,17 @@ namespace LinqTee
             }
         }
 
-        IWyeable<T> IRightSkipper<IWyeable<T>>.IgnoreRight()
+        public IWyeableOperation<T> Wye()
         {
             return this;
         }
 
         ITeeable<T> IRightSkipper<ITeeable<T>>.IgnoreRight()
+        {
+            return this;
+        }
+
+        IWyer<T> IRightSkipper<IWyer<T>>.IgnoreRight()
         {
             return this;
         }

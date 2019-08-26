@@ -13,8 +13,8 @@ namespace LinqTee.Contracts
         IRightProcessor<T> Left(Func<IEnumerable<T>, IEnumerable<T>> selector);
     }
 
-    public interface IRightProcessor<T> : IRightSkipper<IWyeable<T>>
+    public interface IRightProcessor<T> : IRightSkipper<IWyer<T>>
     {
-        IWyeable<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action);
+        IWyer<T> Right(Func<IEnumerable<T>, IEnumerable<T>> action);
     }
 }

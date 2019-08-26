@@ -1,6 +1,6 @@
 namespace LinqTee.Contracts
 {
-    public interface ITeeable<T> : ITeeableCollector<T>, ITeeableProcessor<T>
+    public interface ITeeable<T> : ITeeableCollector<T>, ITeeableProcessor<T>, IWyeableOperation<T>
     {
     }
 }
