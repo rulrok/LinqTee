@@ -152,7 +152,7 @@ IEnumerable<T>
     ]
     [
         { .Wye() | .WyeRight() }
-        { .Concatenate() | .Zip() | .OperateWith((IEnumerable{T}, IEnumerable{T}) -> IEnumerable{T})) }
+        { .Concatenate() | .Zip() | .OperateWith((IEnumerable<T>, IEnumerable<T>) => IEnumerable<T>) }
     ]
     ;
 ```
