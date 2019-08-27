@@ -1,13 +1,13 @@
 # LinqTee
-LINQ-to-Object library to easily manipulate LINQ data bifurcation.
+LINQ-to-Object library to easily bifurcate LINQ data flows and join them back together.
 
-You can **Tee (*T*)** and **Wye (*Y*)** collections easily.
+You can split your collections data processing flow with **Tee (*T*)** and **Wye (*Y*)** easily.
 
-It is inspired by the `tee` linux command.
+It is *inspired* by the `tee` linux command (but not the same thing!).
 
 # What is LinqTee?
 
-If you ever needed to build a fluent linq-to-object chain, but needed to process parts of data differently, this library call help you having a cleaner code.
+If you ever needed to build a fluent LINQ-to-object chain, but needed to process parts of data differently, this library call help you having a cleaner code.
 
 # Examples
 
@@ -53,7 +53,7 @@ It works in a similar way of `lodash`.
 
 It weaves/intersperses two collections into one.
 
-Visual example:
+### Pseudo-code
 
 ```
 var odds = new []{1,3,5,7,9};
@@ -71,7 +71,7 @@ var values2 = zipRight(odds, evens);
 {2,1,4,3,6,5,8,7,10,9}
 ```
 
-Real code (left-to-right):
+### Real code (left-to-right):
 
 ```cs
     bool LargerThan5(int x) => x > 5;
@@ -87,7 +87,7 @@ Real code (left-to-right):
             .Zip();
 ```
 
-Real code (right-to-left)
+### Real code (right-to-left)
 
 ```cs
     bool LargerThan5(int x) => x > 5;
@@ -103,7 +103,7 @@ Real code (right-to-left)
             .Zip();
 ```
 
-# Interface
+# Public Interface
 
 ```cs
 IEnumerable<T>
@@ -126,12 +126,18 @@ IEnumerable<T>
 
 # Custom Wye operations
 
-By default the library includes `concatenation` and `zip`.
+By default the library includes `concatenation` and `zip` to merge a `Tee` operation.
 
 You can create any custom logic by implementing the `IWyeableOperation<T>` interface.
 
 You only have to implement how you want to merge two collections.
-By convenience, they are called `left` and `right` collections.
+The interface has only a single method with two parameters which by convenience have been called `left` and `right`.
+```cs
+    public interface IWyeableOperation<T>
+    {
+        IEnumerable<T> Operate(IEnumerable<T> left, IEnumerable<T> right);
+    }
+```
 
 You don't have to implement the opposite mapping. When using `WyeRight()` method, your operation will just receive the `left` and `right` original collections swapped. 
 
