@@ -2,17 +2,26 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard1.0</TargetFramework>
-        <AssemblyVersion>0.1.0-beta</AssemblyVersion>
+        <AssemblyVersion>0.1.0.0</AssemblyVersion>
         <PackageVersion>0.1.0-beta</PackageVersion>
         <Title>LinqTee</Title>
         <Authors>Reuel Ramos Ribeiro</Authors>
         <Copyright>MIT License</Copyright>
-        <PackageLicenseUrl>https://github.com/rulrok/LinqTee/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
         <RepositoryUrl>https://github.com/rulrok/LinqTee</RepositoryUrl>
         <RepositoryType>GIT</RepositoryType>
         <PackageTags>linq, tee, wye, linqtee, linqtee wye, linq tee,linq split, linq join</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.1.0-beta</Version>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\LICENSE.md">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
 
 </Project>
