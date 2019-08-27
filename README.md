@@ -105,23 +105,31 @@ var values2 = zipRight(odds, evens);
 
 # Public Interface
 
+The API has been built to avoid misusing it. \
+Intellisense will be your best friend, but just in case:
+
+
 ```cs
-IEnumerable<T>
-    .Tee(T -> bool)
-    [.Collect()
-        .(Left(ref IList<T>) | IgnoreLeft())
-        .(Right(ref IList<T>) | IgnoreRight())
-    ]
-    [.Process()
-        .(Left(T -> bool) | IgnoreLeft())
-        .(Right(T -> bool | IgnoreRight())
-        .(Wye() | WyeRight())
-        .(Concatenate() | Zip() | OperateWith((IEnumerable<T>, IEnumerable<T>) -> IEnumerable<T>))
-    ]
-    [.(Wye() | WyeRight())
-        .(Concatenate() | Zip() | OperateWith((IEnumerable<T>, IEnumerable<T>) -> IEnumerable<T>))
-    ]
-    ;
+IEnumerable<T> result;
+result = IEnumerable<T>
+            .Tee(T => bool)
+            [   
+                .Collect()
+                { .Left(ref IList<T>) | .IgnoreLeft() }
+                { .Right(ref IList<T>) | IgnoreRight() }
+            ]
+            [
+                .Process()
+                { .Left(T -> bool) | IgnoreLeft() }
+                { .Right(T -> bool | IgnoreRight() }
+                { .Wye() | .WyeRight() }
+                { .Concatenate() | .Zip() | .OperateWith((IEnumerable<T>, IEnumerable<T>) => IEnumerable<T>) }
+            ]
+            [
+                { .Wye() | .WyeRight() }
+                { .Concatenate() | .Zip() | .OperateWith((IEnumerable{T}, IEnumerable{T}) -> IEnumerable{T})) }
+            ]
+            ;
 ```
 
 # Custom Wye operations
