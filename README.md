@@ -9,6 +9,12 @@ It is *inspired* by the `tee` linux command (but not the same thing!).
 
 If you ever needed to build a fluent LINQ-to-object chain, but needed to process parts of data differently, this library call help you having a cleaner code.
 
+# Install
+
+```powershell
+PM > Install-Package LinqTee -Version 0.1.0-beta
+```
+
 # Examples
 
 ## left-right concatenation
