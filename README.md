@@ -1,3 +1,23 @@
+# Table of content
+
+- [LinqTee](#linqtee)
+- [What is LinqTee?](#what-is-linqtee-)
+- [Install](#install)
+- [Examples](#examples)
+  * [left-right concatenation](#left-right-concatenation)
+  * [right-left concatenation](#right-left-concatenation)
+  * [zipping collections](#zipping-collections)
+    + [Pseudo-code](#pseudo-code)
+    + [Real code (left-to-right):](#real-code--left-to-right--)
+    + [Real code (right-to-left)](#real-code--right-to-left-)
+- [Public Interface](#public-interface)
+- [Custom Wye operations](#custom-wye-operations)
+  * [Concatenate real example](#concatenate-real-example)
+    + [Implementation](#implementation)
+- [Nesting calls](#nesting-calls)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # LinqTee
 LINQ-to-Object library to easily bifurcate LINQ data flows and join them back together.
 
